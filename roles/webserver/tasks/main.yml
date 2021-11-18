@@ -13,7 +13,7 @@
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
   loop:
-    - { path: '{{ nextcloud_data_dir }}', owner: '{{ web_user[nextcloud_webserver_type][ansible_os_family] }}', group: '{{ web_group[nextcloud_webserver_type][ansible_os_family] }}', mode: '0750' }
+#    - { path: '{{ nextcloud_data_dir }}', owner: '{{ web_user[nextcloud_webserver_type][ansible_os_family] }}', group: '{{ web_group[nextcloud_webserver_type][ansible_os_family] }}', mode: '0750' }
     - { path: '{{ nextcloud_www_dir }}',  owner: '{{ web_user[nextcloud_webserver_type][ansible_os_family] }}', group: '{{ web_group[nextcloud_webserver_type][ansible_os_family] }}', mode: '0750' }
 
 - name: use ec2 public hostname if fqdn is not defined
