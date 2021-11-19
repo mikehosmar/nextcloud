@@ -3,7 +3,9 @@
 
 nextcloud_config:
   - "overwrite.cli.url --value=https://{{ nextcloud_fqdn }}"
-  - "trusted_domains 0 --value={{ nextcloud_fqdn }}"
+  - "trusted_domains 0 --value='nextcloud'"
+  - "trusted_domains 1 --value={{ nextcloud_internal_fqdn }}"
+  - "trusted_domains 2 --value={{ nextcloud_fqdn }}"
   - "redis host --value='{% if groups['redis'][0] == groups['webserver'][0] %}{{ redis_socket.path }}{% else %}{{ redis_tcp.address }}{% endif %}'"
   - "redis port --value='{% if groups['redis'][0] == groups['webserver'][0] %}0{% else %}{{ redis_tcp.port }}{% endif %}' --type=integer"
   - "redis timeout --value='0' --type=integer"
@@ -47,6 +49,14 @@ nextcloud_config:
   - "theme --value=''"
   - "default_phone_region --value='{{ nextcloud_default_phone_region }}'"
   - "maintenance --value=false --type=boolean"
+  
+nextcloud_proxy_config:
+  - "trusted_proxy 0 --value={{ nextcloud_trusted_proxy }}"
+  - "overwritehost --value={{ nextcloud_fqdn }}"
+  - "overwriteprotocol --value='https'"
+  - "overwritewebroot --value={{ nextcloud_overwritewebroot }}"
+  - "overwritecondaddr --value={{ nextcloud_overwritecondaddr }}"
+
 
 nextcloud_mail_config:
   - "mail_from_address --value={{ nextcloud_mail_from }}"
