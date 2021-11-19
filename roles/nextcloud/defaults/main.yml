@@ -51,7 +51,7 @@ nextcloud_config:
   - "maintenance --value=false --type=boolean"
   
 nextcloud_proxy_config:
-  - "trusted_proxy 0 --value={{ nextcloud_trusted_proxy }}"
+  - "trusted_proxies 0 --value={{ nextcloud_trusted_proxy }}"
   - "overwritehost --value={{ nextcloud_fqdn }}"
   - "overwriteprotocol --value='https'"
   - "overwritewebroot --value={{ nextcloud_overwritewebroot }}"
