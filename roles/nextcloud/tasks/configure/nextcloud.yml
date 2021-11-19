@@ -47,7 +47,7 @@
 
 - debug: var=first_setup_nextcloud verbosity=2
 
-- name: set nextcloud domain config.php values
+- name: set nextcloud standard config.php values
   become_user: "{{ web_user[nextcloud_webserver_type][ansible_os_family] }}"
   become_flags: "{{ ansible_become_flags | default(omit) }}"
   become: yes
@@ -56,6 +56,16 @@
     chdir: "{{ nextcloud_www_dir }}"
   loop: "{{ nextcloud_config }}"
   when: ( first_setup_nextcloud is changed ) or ( force_nextcloud_config|default(false) )
+  
+- name: set nextcloud reverse proxy config.php values
+  become_user: "{{ web_user[nextcloud_webserver_type][ansible_os_family] }}"
+  become_flags: "{{ ansible_become_flags | default(omit) }}"
+  become: yes
+  shell: php occ config:system:set {{ item }}
+  args:
+    chdir: "{{ nextcloud_www_dir }}"
+  loop: "{{ nextcloud_config }}"
+  when: nextcloud_configure_proxy|bool and (( first_setup_nextcloud is changed ) or ( force_nextcloud_config|default(false) ))
 
 - name: set nextcloud mail config.php values
   become_user: "{{ web_user[nextcloud_webserver_type][ansible_os_family] }}"
