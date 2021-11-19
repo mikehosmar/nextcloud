@@ -3,7 +3,14 @@
 # Your Nextcloud Server Domain Name
 
 # Default is the fqdn of the Machine
-nextcloud_fqdn          = nextcloud.hoshome.local
+nextcloud_fqdn                   = nextcloud.hosmar.ca
+nextcloud_internal_fqdn          = nextcloud.hoshome.local
+
+# Reverse Proxy Settings
+nextcloud_configure_proxy = false
+nextcloud_trusted_proxy =  192.168.0.10
+nextcloud_overwritewebroot = /
+nextcloud_overwritecondaddr = ^192\\.168\\.0\\.10$
 
 # Selfsigned Certificate are Default
 nextcloud_certificate_type  = 'selfsigned'
