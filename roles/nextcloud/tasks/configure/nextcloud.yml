@@ -64,7 +64,7 @@
   shell: php occ config:system:set {{ item }}
   args:
     chdir: "{{ nextcloud_www_dir }}"
-  loop: "{{ nextcloud_config }}"
+  loop: "{{ nextcloud_proxy_config }}"
   when: nextcloud_configure_proxy|bool and (( first_setup_nextcloud is changed ) or ( force_nextcloud_config|default(false) ))
 
 - name: set nextcloud mail config.php values
