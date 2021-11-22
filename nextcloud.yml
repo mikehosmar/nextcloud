@@ -79,7 +79,7 @@
   post_tasks:
     - name: check install status
       uri:
-        url: https://{{ nextcloud_fqdn }}/status.php
+        url: https://{{ nextcloud_internal_fqdn }}/status.php
         return_content: yes
         validate_certs: "{% if (nextcloud_certificate_type == 'selfsigned') or nextcloud_certificate_test %}no{% else %}yes{% endif %}"
       register: nextcloud_status
