@@ -3,8 +3,8 @@
 # Your Nextcloud Server Domain Name
 
 # Default is the fqdn of the Machine
-nextcloud_fqdn                   = nextcloud.hosmar.ca
-nextcloud_internal_fqdn          = nextcloud.hoshome.local
+nextcloud_fqdn                   = nextcloud.example.ca
+nextcloud_internal_fqdn          = nextcloud.example.local
 
 # Reverse Proxy Settings
 nextcloud_configure_proxy = false
