@@ -56,7 +56,7 @@
   mysql_user:
     name:     "{{ nextcloud_db_user }}"
     password: "{{ nextcloud_db_passwd }}"
-    priv:     "{{ nextcloud_db }}.*:ALL"
+    priv:     "{{ nextcloud_db }}.*:ALL,GRANT"
     host:     "{{ nextcloud_db_host }}"
     state: present
     login_unix_socket: "{{ mariadb_socket[ansible_distribution] }}"
